@@ -1,6 +1,6 @@
 package com.Springboot.practice.dao;
 
-import com.Springboot.practice.dto.UserDto;
+import com.Springboot.practice.domain.dto.UserDto;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 

@@ -1,7 +1,7 @@
 package com.Springboot.practice.controller;
 
 import com.Springboot.practice.dao.UserDao;
-import com.Springboot.practice.dto.UserDto;
+import com.Springboot.practice.domain.dto.UserDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

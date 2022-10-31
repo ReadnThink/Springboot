@@ -1,4 +1,4 @@
-package com.Springboot.practice.dto;
+package com.Springboot.practice.domain.dto;
 
 public class MemberDto {
     private String name;
