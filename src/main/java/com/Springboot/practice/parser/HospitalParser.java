@@ -8,9 +8,9 @@ import java.util.Arrays;
 public class HospitalParser implements Parser<Hospital> {
     @Override
     public Hospital parse(String str) {
-        String[] row = str.replace("\"","").split(",");
+//        String[] row = str.replace("\"","").split(",");
+        String[] row = str.split("\",\"");
         System.out.println(Arrays.toString(row));
-
         Hospital hospital = new Hospital();
 
         //1 .id = 첫번쨰 " 따로처리
@@ -42,11 +42,13 @@ public class HospitalParser implements Parser<Hospital> {
         //12. 업태구분명 ex)치과의원, 한의원
         hospital.setBusinessTypeName(row[25]);
         //13. 입원실 수
-        hospital.setHealthcareProviderCount(Integer.parseInt(row[30]));
+        hospital.setHealthcareProviderCount(Integer.parseInt(row[29]));
+        //15. 병상 수
+        hospital.setPatientRoomCount(Integer.parseInt(row[30]));
         //14. 병상 수
-        hospital.setPatientRoomCount(Integer.parseInt(row[31]));
+        hospital.setTotalNumberOfBeds(Integer.parseInt(row[31]));
         //15. 총 면적
-        hospital.setTotalNumberOfBeds(Integer.parseInt(row[32]));
+        hospital.setTotalAreaSize(Float.parseFloat(row[32]));
 
 
         return hospital;
