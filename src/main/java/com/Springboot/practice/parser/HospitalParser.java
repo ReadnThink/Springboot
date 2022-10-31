@@ -10,7 +10,7 @@ public class HospitalParser implements Parser<Hospital> {
     public Hospital parse(String str) {
 //        String[] row = str.replace("\"","").split(",");
         String[] row = str.split("\",\"");
-        System.out.println(Arrays.toString(row));
+//        System.out.println(Arrays.toString(row));
         Hospital hospital = new Hospital();
 
         //1 .id = 첫번쨰 " 따로처리
