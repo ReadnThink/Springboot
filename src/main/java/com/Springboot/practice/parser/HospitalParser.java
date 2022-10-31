@@ -12,8 +12,9 @@ public class HospitalParser implements Parser<Hospital> {
         System.out.println(Arrays.toString(row));
 
         Hospital hospital = new Hospital();
+
         //1 .id = 첫번쨰 " 따로처리
-        hospital.setId(Integer.parseInt(row[0].replace("\"", ""))); // StoI
+        hospital.setId(Integer.parseInt(row[0])); // StoI
         //2. 서비스명
         hospital.setOpenServiceName(row[1]);
         //3. 개방자치단체코드
@@ -31,7 +32,7 @@ public class HospitalParser implements Parser<Hospital> {
         //7. 상세영업상태코드
         hospital.setBusinessStatusCode(Integer.parseInt(row[9]));
         //8. 소재지 전화
-        hospital.setPhone(row[17]);
+        hospital.setPhone(row[15]);
         //9. 소재지 전체주소
         hospital.setFullAddress(row[18]);
         //10. 소재지 도로명주소
@@ -48,6 +49,6 @@ public class HospitalParser implements Parser<Hospital> {
         hospital.setTotalNumberOfBeds(Integer.parseInt(row[32]));
 
 
-        return new Hospital();
+        return hospital;
     }
 }
