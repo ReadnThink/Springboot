@@ -9,12 +9,12 @@ public class HospitalParser implements Parser<Hospital> {
     @Override
     public Hospital parse(String str) {
 //        String[] row = str.replace("\"","").split(",");
-        String[] row = str.split("\",\"");
 //        System.out.println(Arrays.toString(row));
+        String[] row = str.split("\",\"");
         Hospital hospital = new Hospital();
 
         //1 .id = 첫번쨰 " 따로처리
-        hospital.setId(Integer.parseInt(row[0])); // StoI
+        hospital.setId(Integer.parseInt(row[0].replace("\"",""))); // StoI
         //2. 서비스명
         hospital.setOpenServiceName(row[1]);
         //3. 개방자치단체코드

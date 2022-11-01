@@ -7,16 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReadLineContext<T> {
-    /*
-    1
-    파싱중 문제가 생겨 이 라인은 넘어갑니다. 파일내용:"93012","?ǿ?","01_01
-    파싱중 문제가 생겨 이 라인은 넘어갑니다. 파일내용:"93013","?ǿ?","01_01
-    파싱중 문제가 생겨 이 라인은 넘어갑니다. 파일내용:"93014","?ǿ?","01_01
-    파싱중 문제가 생겨 이 라인은 넘어갑니다. 파일내용:"93015","?ǿ?","01_01
-    파싱중 문제가 생겨 이 라인은 넘어갑니다. 파일내용:"93016","?ǿ?","01_01
-    파싱중 문제가 생겨 이 라인은 넘어갑니다. 파일내용:"93017","?ǿ?","01_01
-    파싱중 문제가 생겨 이 라인은 넘어갑니다. 파일내용:"93018","?ǿ?","01_01
-     */
+
     private Parser<T> parser;
 
     public ReadLineContext(Parser<T> parser) {
@@ -30,6 +21,7 @@ public class ReadLineContext<T> {
                 new FileReader(filename)
         );
         String str;
+        reader.readLine();
         while ((str = reader.readLine()) != null) {
             try {
                 result.add(parser.parse(str));
@@ -40,5 +32,4 @@ public class ReadLineContext<T> {
         reader.close();
         return result;
     }
-
 }
