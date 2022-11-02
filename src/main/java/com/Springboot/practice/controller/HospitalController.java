@@ -6,7 +6,11 @@ import com.Springboot.practice.dao.UserDao;
 import com.Springboot.practice.domain.dto.Hospital;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/Hospital-api")
@@ -34,4 +38,16 @@ public class HospitalController {
         hospital = hospitalDao.findById(id);
         return hospital;
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Hospital> get(@PathVariable Integer id){
+        Hospital hospital = hospitalDao.findById(id);
+        Optional<Hospital> opt = Optional.of(hospital);
+        if(!opt.isEmpty()){
+            return  ResponseEntity.ok().body(hospital);
+        } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Hospital());
+        }
+    }
+
 }
