@@ -45,8 +45,8 @@ public class HospitalDao {
         String sql = "delete from nation_wide_hospitals";
         this.jdbcTemplate.update(sql);
     }
-    public Hospital deleteById(int id){
-        return this.jdbcTemplate.queryForObject("delete from nation_wide_hospitals where id = ?", rowMapper, id);
+    public void deleteById(int id){
+        this.jdbcTemplate.update("delete from nation_wide_hospitals where id = ?", id);
     }
 
     public int getConut(){
