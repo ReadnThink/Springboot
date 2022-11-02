@@ -29,10 +29,33 @@ class HospitalParserTest {
 
     @Test
     @DisplayName("Hospital이 insert가 잘 되는지")
-    void add(){
+    void addAndGet(){
+        hospitalDao.deleteAll();
+        assertEquals(0, hospitalDao.getConut());
+
         HospitalParser hp = new HospitalParser();
         Hospital hospital = hp.parse(line1);
+
         hospitalDao.add(hospital);
+        assertEquals(1, hospitalDao.getConut());
+
+        Hospital selectedHospital = hospitalDao.findById(hospital.getId());
+        assertEquals(selectedHospital.getId(), hospital.getId());
+        assertEquals(selectedHospital.getOpenServiceName(), hospital.getOpenServiceName());
+        assertEquals(selectedHospital.getOpenLocalGovernmentCode(),hospital.getOpenLocalGovernmentCode());
+        assertEquals(selectedHospital.getManagementNumber(),hospital.getManagementNumber());
+        assertTrue(selectedHospital.getLicenseData().isEqual(hospital.getLicenseData()));
+        assertEquals(selectedHospital.getBusinessStatus(),hospital.getBusinessStatus());
+        assertEquals(selectedHospital.getBusinessStatusCode(),hospital.getBusinessStatusCode());
+        assertEquals(selectedHospital.getPhone(),hospital.getPhone());
+        assertEquals(selectedHospital.getFullAddress(),hospital.getFullAddress());
+        assertEquals(selectedHospital.getRoadNameAddress(),hospital.getRoadNameAddress());
+        assertEquals(selectedHospital.getHospitalName(), hospital.getHospitalName());
+        assertEquals(selectedHospital.getBusinessTypeName(),hospital.getBusinessTypeName());
+        assertEquals(selectedHospital.getHealthcareProviderCount(),hospital.getHealthcareProviderCount());
+        assertEquals(selectedHospital.getPatientRoomCount(),hospital.getPatientRoomCount());
+        assertEquals(selectedHospital.getTotalNumberOfBeds(), hospital.getTotalNumberOfBeds());
+        assertEquals(selectedHospital.getTotalAreaSize(),hospital.getTotalAreaSize());
     }
 
     @Test
@@ -50,6 +73,7 @@ class HospitalParserTest {
     void oneHundread() throws IOException {
         //서버환경에서 build할때 문제가 생길 수 있습니다.
         //어디에서든지 실행 할 수 있게짜는 것이 목표다.
+        hospitalDao.deleteAll();
         String filename = "C:\\Users\\iser\\Desktop\\멋사 교육자료\\자료\\전국병의원정보.csv";
         List<Hospital> hospitalList = hospitalReadLineContext.readByLine(filename);
         System.out.printf("파싱된 갯수: %d",hospitalList.size());
@@ -59,6 +83,9 @@ class HospitalParserTest {
             System.out.println("i번째 = " + hospitalList.get(i).getHospitalName());
         }
         System.out.printf("파싱된 갯수: %s",hospitalList.size());
+        for (int i = 0; i < 10; i++) {
+            hospitalDao.add(hospitalList.get(i));
+        }
     }
 
     @Test
