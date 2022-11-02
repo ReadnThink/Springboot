@@ -73,14 +73,14 @@ class HospitalParserTest {
     @Test
     @DisplayName("10만건 이상 데이터가 파싱되는지 Service를 통해 확인")
     void HospitalService() throws IOException {
-//        //서버환경에서 build할때 문제가 생길 수 있습니다.
-//        //어디에서든지 실행 할 수 있게짜는 것이 목표다.
-//        hospitalDao.deleteAll();
-//        String filename = "C:\\Users\\iser\\Desktop\\멋사 교육자료\\자료\\전국병의원정보.csv";
-//        int cnt = this.hopitalService.insertLargeVolumeHospitalData(filename);
-//        assertTrue(cnt > 1000);
-//        assertTrue(cnt > 10000);
-//        System.out.printf("파싱된 데이터 개수:%d\n", cnt);
+        //서버환경에서 build할때 문제가 생길 수 있습니다.
+        //어디에서든지 실행 할 수 있게짜는 것이 목표다.
+        hospitalDao.deleteAll();
+        String filename = "C:\\Users\\iser\\Desktop\\멋사 교육자료\\자료\\전국병의원정보.csv";
+        int cnt = this.hopitalService.insertLargeVolumeHospitalData(filename);
+        assertTrue(cnt > 1000);
+        assertTrue(cnt > 10000);
+        System.out.printf("파싱된 데이터 개수:%d\n", cnt);
     }
 
     @Test
