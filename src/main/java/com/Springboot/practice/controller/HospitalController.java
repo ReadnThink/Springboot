@@ -44,6 +44,17 @@ public class HospitalController {
         return hospital;
     }
 
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Hospital> deleteById(@PathVariable Integer id){
+        Hospital hospital = hospitalDao.deleteById(id);
+        Optional<Hospital> opt = Optional.of(hospital);
+        if(!opt.isEmpty()){
+            return  ResponseEntity.ok().body(hospital);
+        } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Hospital());
+        }
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Hospital> get(@PathVariable Integer id){
         Hospital hospital = hospitalDao.findById(id);
