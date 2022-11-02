@@ -49,5 +49,4 @@ public class HospitalController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Hospital());
         }
     }
-
 }
