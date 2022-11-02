@@ -19,6 +19,11 @@ public class HospitalController {
     @Autowired
     HospitalDao hospitalDao;
 
+    @GetMapping(value = "/hello")
+    public String hello(){
+        return "hello";
+    }
+
     @PostMapping(value = "/hospital")
     public Hospital post(@RequestBody Hospital hospital){
         hospitalDao.add(hospital);
