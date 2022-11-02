@@ -29,8 +29,9 @@ public class HospitalController {
     }
 
     @GetMapping(value = "/information")
-    public String information(@RequestParam int id){
-        hospitalDao.findById(id);
-        return "id값이 일치하는 정보가 호출되었습니다.";
+    public Hospital information(@RequestParam int id){
+        Hospital hospital = new Hospital();
+        hospital = hospitalDao.findById(id);
+        return hospital;
     }
 }
