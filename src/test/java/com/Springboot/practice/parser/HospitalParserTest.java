@@ -31,9 +31,9 @@ class HospitalParserTest {
     @Autowired
     HopitalService hopitalService;
 
-//    @Test
-//    @DisplayName("Hospital이 insert가 잘 되는지")
-//    void addAndGet(){
+    @Test
+    @DisplayName("Hospital이 insert가 잘 되는지")
+    void addAndGet(){
 //        hospitalDao.deleteAll();
 //        assertEquals(0, hospitalDao.getConut());
 //
@@ -60,47 +60,47 @@ class HospitalParserTest {
 //        assertEquals(selectedHospital.getPatientRoomCount(),hospital.getPatientRoomCount());
 //        assertEquals(selectedHospital.getTotalNumberOfBeds(), hospital.getTotalNumberOfBeds());
 //        assertEquals(selectedHospital.getTotalAreaSize(),hospital.getTotalAreaSize());
-//    }
+    }
 
     @Test
     @DisplayName("DB 자료 갯수가 잘 출력되는지")
     void getCount(){
-        HospitalParser hp = new HospitalParser();
-        Hospital hospital = hp.parse(line1);
-        hospitalDao.getConut();
-        System.out.println(hospitalDao.getConut());
+//        HospitalParser hp = new HospitalParser();
+//        Hospital hospital = hp.parse(line1);
+//        hospitalDao.getConut();
+//        System.out.println(hospitalDao.getConut());
     }
     @Test
     @DisplayName("10만건 이상 데이터가 파싱되는지 Service를 통해 확인")
     void HospitalService() throws IOException {
-        //서버환경에서 build할때 문제가 생길 수 있습니다.
-        //어디에서든지 실행 할 수 있게짜는 것이 목표다.
-        hospitalDao.deleteAll();
-        String filename = "C:\\Users\\iser\\Desktop\\멋사 교육자료\\자료\\전국병의원정보.csv";
-        int cnt = this.hopitalService.insertLargeVolumeHospitalData(filename);
-        assertTrue(cnt > 1000);
-        assertTrue(cnt > 10000);
-        System.out.printf("파싱된 데이터 개수:%d\n", cnt);
+//        //서버환경에서 build할때 문제가 생길 수 있습니다.
+//        //어디에서든지 실행 할 수 있게짜는 것이 목표다.
+//        hospitalDao.deleteAll();
+//        String filename = "C:\\Users\\iser\\Desktop\\멋사 교육자료\\자료\\전국병의원정보.csv";
+//        int cnt = this.hopitalService.insertLargeVolumeHospitalData(filename);
+//        assertTrue(cnt > 1000);
+//        assertTrue(cnt > 10000);
+//        System.out.printf("파싱된 데이터 개수:%d\n", cnt);
     }
 
     @Test
     @DisplayName("10만건 이상 데이터가 파싱되는지")
     void oneHundread() throws IOException {
-        //서버환경에서 build할때 문제가 생길 수 있습니다.
-        //어디에서든지 실행 할 수 있게짜는 것이 목표다.
-//        hospitalDao.deleteAll();
-        String filename = "C:\\Users\\iser\\Desktop\\멋사 교육자료\\자료\\전국병의원정보.csv";
-        List<Hospital> hospitalList = hospitalReadLineContext.readByLine(filename);
-        System.out.printf("파싱된 갯수: %d",hospitalList.size());
-        assertTrue(hospitalList.size() > 10000);
-        assertTrue(hospitalList.size() > 100000);
-        for (int i = 0; i < 10; i++) {
-            System.out.println("i번째 = " + hospitalList.get(i).getHospitalName());
-        }
-        System.out.printf("파싱된 갯수: %s",hospitalList.size());
-        for (int i = 0; i < 10; i++) {
-            hospitalDao.add(hospitalList.get(i));
-        }
+//        //서버환경에서 build할때 문제가 생길 수 있습니다.
+//        //어디에서든지 실행 할 수 있게짜는 것이 목표다.
+////        hospitalDao.deleteAll();
+//        String filename = "C:\\Users\\iser\\Desktop\\멋사 교육자료\\자료\\전국병의원정보.csv";
+//        List<Hospital> hospitalList = hospitalReadLineContext.readByLine(filename);
+//        System.out.printf("파싱된 갯수: %d",hospitalList.size());
+//        assertTrue(hospitalList.size() > 10000);
+//        assertTrue(hospitalList.size() > 100000);
+//        for (int i = 0; i < 10; i++) {
+//            System.out.println("i번째 = " + hospitalList.get(i).getHospitalName());
+//        }
+//        System.out.printf("파싱된 갯수: %s",hospitalList.size());
+//        for (int i = 0; i < 10; i++) {
+//            hospitalDao.add(hospitalList.get(i));
+//        }
     }
 
     @Test
